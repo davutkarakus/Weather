@@ -13,5 +13,6 @@ interface HavaAPI {
 
 
     @GET("data/2.5/weather?")
-    fun getHavaBilgi(@Query("lat") lat:String, @Query("lon") long:String, @Query("APPID") app_id:String): Single<HavaBilgi>
+    fun getHavaBilgi(@Query("q") cityname:String, @Query("APPID") app_id:String): Single<HavaBilgi>
+
 }

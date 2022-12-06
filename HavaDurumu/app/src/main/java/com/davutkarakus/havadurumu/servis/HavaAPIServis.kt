@@ -20,10 +20,11 @@ class HavaAPIServis {
         .build()
         .create(HavaAPI::class.java)
 
-    fun getData(lat:String,lon:String,app_id:String): Single<HavaBilgi> {
-        return api.getHavaBilgi(lat,lon,app_id)
+    fun getData(cityname:String,app_id:String): Single<HavaBilgi> {
+        return api.getHavaBilgi(cityname, app_id)
 
     }
+
 
 
 }

@@ -25,20 +25,19 @@ class havaDurumViewModel:ViewModel() {
     val disposable=CompositeDisposable()
 
 
-    fun refreshData(lat:String,lon:String,app_id:String){
-       verileriInternettenAl(lat,lon, app_id)
+    fun refreshData(cityname: String,app_id: String){
+       verileriInternettenAl(cityname , app_id)
     }
-    private fun verileriInternettenAl(lat:String,lon:String,app_id:String){
+    private fun verileriInternettenAl(cityname:String,app_id:String){
         yukleniyor.value=true
         hataMesaji.value=false
         disposable.add(
-            havaApiServis.getData(lat,lon,app_id)
+            havaApiServis.getData(cityname,app_id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object :DisposableSingleObserver<HavaBilgi>(){
                     override fun onSuccess(t: HavaBilgi) {
-
-                      bilgiler.value=t
+                        bilgiler.value=t
                         hataMesaji.value=false
                         yukleniyor.value=false
 
@@ -52,6 +51,5 @@ class havaDurumViewModel:ViewModel() {
                 })
         )
     }
-
 
 }

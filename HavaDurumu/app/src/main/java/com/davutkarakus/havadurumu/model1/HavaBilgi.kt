@@ -46,6 +46,7 @@ data class HavaBilgi(
 
     @SerializedName("wind")
     val wind: Wind
+
 )
 {
 
