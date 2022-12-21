@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-        viewModel.refreshData(cityname, AppId)
         //swiper refresh
         swipeRefreshLayout.setOnRefreshListener {
             progressBar.visibility = View.VISIBLE
@@ -76,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             swipeRefreshLayout.isRefreshing = false
             observeLiveData()
         }
-
         observeLiveData()
     }
 
@@ -97,19 +95,17 @@ class MainActivity : AppCompatActivity() {
         fun observeLiveData(){
             viewModel.bilgiler.observe(this, Observer {
                 it?.let {
-
-                    println(it.main.temp)
-                    AnasicaklikText.text="${(it.main.temp-273).toInt()}°C "
+                    AnasicaklikText.text="${(it.main.temp-273).toInt()}°C"
                     sehirText.text=it.name
                     minSicaklikText.text="Min.Temp=${(it.main.tempMin-273).toInt()}°C"
                     maxSicaklikText.text="Max.Temp=${(it.main.tempMax-273).toInt()}°C"
-                    sunriseText.text=SimpleDateFormat("hh:mm a",Locale.ENGLISH).format(it.sys.sunrise*1000).toString()
-                    sunsetText.text=SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(it.sys.sunset*1000).toString()
+                    sunriseText.text=SimpleDateFormat("hh:mm a",Locale.ENGLISH).format(it.sys.sunrise*1000L).toString()
+                    sunsetText.text=SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(it.sys.sunset*1000L).toString()
                     windText.text="${it.wind.speed} km/sa"
                     humidityText.text="%${it.main.humidity}"
                     pressureText.text="${it.main.pressure} mb"
-                    bulutDurumText.text=it.weather.get(0).description
-                    updatedText.text="Updated at : ${SimpleDateFormat("hh:mm a", Locale.ENGLISH).format((it.dt)*1000)}"
+                    bulutDurumText.text=it.weather.get(0).description.toUpperCase()
+                    updatedText.text="Updated at : ${SimpleDateFormat("hh:mm a", Locale.ENGLISH).format((it.dt)*1000L)}"
 
                 }
             })
