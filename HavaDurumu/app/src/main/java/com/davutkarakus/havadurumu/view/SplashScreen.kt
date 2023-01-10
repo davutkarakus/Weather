@@ -88,7 +88,7 @@ class SplashScreen : AppCompatActivity() {
 
         }else{
             //izin zaten verilmiş
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1,50f,locationListener)
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,1,50f,locationListener)
           progressBar.max=10
           val currentProgress=10
           ObjectAnimator.ofInt(progressBar,"progress",currentProgress).setDuration(4000).start()
@@ -110,7 +110,7 @@ class SplashScreen : AppCompatActivity() {
                                 progressBar.visibility=View.VISIBLE
                                 SplashHataText.visibility=View.INVISIBLE
                                 tryAgainText.visibility=View.INVISIBLE
-                                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1,50f,locationListener)
+                                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,1,50f,locationListener)
                                 Toast.makeText(this@SplashScreen,"BURASI 1",Toast.LENGTH_LONG).show()
                                 progressBar.max=10
                                 val currentProgress=10

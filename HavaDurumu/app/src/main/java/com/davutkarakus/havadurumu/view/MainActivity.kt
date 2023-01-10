@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
         }else{
             //izin zaten verilmiş
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1,50f,locationListener)
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,1,50f,locationListener)
         }
 
 
@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity() {
                 if(ContextCompat.checkSelfPermission(this,
                         Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
                     //izin verildi
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1,1f,locationListener)
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,1,1f,locationListener)
                 }
 
 
